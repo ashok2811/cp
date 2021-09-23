@@ -19,7 +19,7 @@ public:
             mxr[i] = max(mxr[i+1], height[i]);
         }
         
-        // min{mxl , mxr}
+        // min{mxl , mxr}   
         // summation of min{mxl , mxr} - building height
         long long ans = 0;
         for(int i = 0 ; i < n ;i++){
