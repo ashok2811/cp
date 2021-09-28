@@ -21,7 +21,7 @@ memset(dp, -1, sizeof(dp));
 
     int T; cin >> T;
     while (T--)
-    {
+    { 
         string x, y;
         cin>>x >>y;
 
