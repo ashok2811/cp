@@ -10,38 +10,24 @@ int solve(int egg, int floor){
         if(dp[egg][floor]!=-1) return dp[egg][floor];
 
         int mn = INT_MAX;
-        // Recursive Cond
-        for(int k =1 ; k<=floor ; k++){
-            // Break 
-            //cout << k << " " << mn << endl;
-            int low , high;
-
-            if(dp[egg-1][k-1]!=-1){
-                low = dp[egg-1][k-1];
+        int start = 1;
+        int end = floor;
+        while (start<=end)
+        {
+            int middle = (start + end)/2;
+            int left = solve(egg-1, middle-1);
+            int right = solve(egg , floor-middle);
+            int temp = 1 + max(left, right);
+            if(left<right){
+                start = middle+1;
             }
             else{
-                low = solve(egg-1, k-1);
-                dp[egg-1][k-1] = low;
+                end = middle-1;
             }
-
-             if(dp[egg][floor-k]!=-1){
-                high = (dp[egg][floor-k]);
-            }
-            else{
-                high = solve(egg, floor- k);
-                dp[egg][floor-k] = high;
-            }
-
-
-            int temp = 1 + max( low , high);
-            //Did not break 
-            mn = min(mn, temp);
-        } 
-
+            mn = min(mn , temp);
+        }
         dp[egg][floor] = mn;
         return mn;
-
-
 }
 
 
