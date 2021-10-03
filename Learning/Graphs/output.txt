@@ -1,1 +1,4 @@
-0 1 2 2 3 3 
+Scenario #1:
+Suspicious bugs found!
+Scenario #2:
+No suspicious bugs found!
