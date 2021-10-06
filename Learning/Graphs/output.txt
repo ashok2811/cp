@@ -1,1 +1,7 @@
-1 - 2 is a bridge
+3 is an articulation point
+1 : 0 0
+2 : 4 1
+3 : 1 0
+4 : 3 0
+5 : 5 1
+6 : 2 0
