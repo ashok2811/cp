@@ -5,6 +5,7 @@
         "limits": "cpp",
         "valarray": "cpp",
         "ostream": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "iosfwd": "cpp"
     }
 }
