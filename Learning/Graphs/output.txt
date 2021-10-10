@@ -1,6 +1,9 @@
-dfs1() called from 5 and printing SCC
+SCC #1
+8 4 
+------------------
+SCC #2
+3 2 1 
+------------------
+SCC #3
 6 7 5 
-dfs1() called from 4 and printing SCC
-4 
-dfs1() called from 1 and printing SCC
-2 3 1 
+------------------
