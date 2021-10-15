@@ -1,0 +1,48 @@
+[ 0 0 0 0 2 1 0 1 1 1 0 ]
+sum 1
+i 1
+n - i 9
+v[n - i] 1
+sum 3
+i 2
+n - i 8
+v[n - i] 1
+sum 6
+i 3
+n - i 7
+v[n - i] 1
+sum 11
+i 5
+n - i 5
+v[n - i] 1
+aa 1
+
+[ 0 8 0 ]
+sum 8
+i 1
+n - i 1
+v[n - i] 8
+
+[ 0 1 1 1 1 1 1 1 1 1 1 1 0 ]
+sum 1
+i 1
+n - i 11
+v[n - i] 1
+sum 3
+i 2
+n - i 10
+v[n - i] 1
+sum 6
+i 3
+n - i 9
+v[n - i] 1
+sum 10
+i 4
+n - i 8
+v[n - i] 1
+sum 15
+i 5
+n - i 7
+v[n - i] 1
+aa 1
+
