@@ -31,32 +31,31 @@ typedef vector<int> vi;
 #define all(x) x.begin(), x.end()
 #define ins insert
 /*--------------------------------------------------------*/
-
 void solve() {
 
-	ll n , k ;
-	cin >> n >> k;
-	ll a[k];
+	int n , tm;
+	cin >> n >> tm;
+	string arr;
+	cin >> arr;
 
-	Rep(i, 0, k) {
-		cin >> a[i];
-	}
+	if (n >= 2) {
 
-	sort(a, a + k);
-	ll j = k - 1;
-	ll cat = 0, mouse = a[j], c = 0;
+		for (int j = 0 ; j < tm; j++) {
+			for (int i = 0; i < n - 1; ++i)
+			{
+				if (arr[i] == 'B' && arr[i + 1] == 'G' ) {
+					char ch = arr[i];
+					arr[i] = arr[i + 1];
+					arr[i + 1] = ch;
+					i++;
+				}
+			}
 
-	while (cat < mouse) {
-		ll val  = n - mouse;
-		c++;
-		j--;
-		if (j < 0) {
-			break;
 		}
-		cat += val;
-		mouse = a[j];
 	}
-	cout << c << nl;
+
+	cout << arr << endl;
+
 }
 /*--------------------------------------------------------*/
 int main() {
@@ -66,7 +65,7 @@ int main() {
 	freopen("output.txt", "w", stdout);
 	freopen("error.txt", "w", stderr);
 #endif
-	int t; cin >> t;
+	int t = 1;
 	while (t--) {
 
 		solve();
@@ -74,34 +73,3 @@ int main() {
 	}
 	return 0;
 }
-
-/*
-
-void solve() {
-
-	ll n , k ;
-	cin >> n >> k;
-	ll a[k];
-
-	Rep(i, 0, k) {
-		cin >> a[i];
-	}
-
-	sort(a, a + k);
-	ll j = k - 1;
-	ll cat = 0, mouse = a[j], c = 0;
-
-	while (cat < mouse) {
-		ll val  = n - mouse;
-		c++;
-		j--;
-		if (j < 0) {
-			break;
-		}
-		cat += val;
-		mouse = a[j];
-	}
-	cout << c << nl;
-}
-*/
-

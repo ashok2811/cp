@@ -31,32 +31,35 @@ typedef vector<int> vi;
 #define all(x) x.begin(), x.end()
 #define ins insert
 /*--------------------------------------------------------*/
-
 void solve() {
 
-	ll n , k ;
-	cin >> n >> k;
-	ll a[k];
+	int mn = INT_MAX;
+	int n; cin >> n;
+	int arr[n];
+	Rep(i, 0 , n) {
+		cin >> arr[i];
+		mn = min(arr[i], mn);
 
-	Rep(i, 0, k) {
-		cin >> a[i];
 	}
-
-	sort(a, a + k);
-	ll j = k - 1;
-	ll cat = 0, mouse = a[j], c = 0;
-
-	while (cat < mouse) {
-		ll val  = n - mouse;
-		c++;
-		j--;
-		if (j < 0) {
-			break;
+	vector<int> ans;
+	Rep(i , 0 , n) {
+		if (arr[i] != mn) {
+			ans.push_back(abs(arr[i] - mn));
 		}
-		cat += val;
-		mouse = a[j];
 	}
-	cout << c << nl;
+
+	if (ans.size() == 0) {
+		cout << -1 << endl;
+	}
+	else {
+		int curr_gcd = ans[0];
+		for (auto x : ans) {
+			curr_gcd = __gcd(curr_gcd , x);
+		}
+		cout << curr_gcd << endl;
+	}
+
+
 }
 /*--------------------------------------------------------*/
 int main() {
@@ -74,34 +77,3 @@ int main() {
 	}
 	return 0;
 }
-
-/*
-
-void solve() {
-
-	ll n , k ;
-	cin >> n >> k;
-	ll a[k];
-
-	Rep(i, 0, k) {
-		cin >> a[i];
-	}
-
-	sort(a, a + k);
-	ll j = k - 1;
-	ll cat = 0, mouse = a[j], c = 0;
-
-	while (cat < mouse) {
-		ll val  = n - mouse;
-		c++;
-		j--;
-		if (j < 0) {
-			break;
-		}
-		cat += val;
-		mouse = a[j];
-	}
-	cout << c << nl;
-}
-*/
-

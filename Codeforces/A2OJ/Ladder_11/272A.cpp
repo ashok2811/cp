@@ -31,32 +31,23 @@ typedef vector<int> vi;
 #define all(x) x.begin(), x.end()
 #define ins insert
 /*--------------------------------------------------------*/
-
 void solve() {
 
-	ll n , k ;
-	cin >> n >> k;
-	ll a[k];
-
-	Rep(i, 0, k) {
-		cin >> a[i];
+	int n ; cin >> n;
+	int sum = 0 ;
+	for (int i = 0 ; i < n ; i++) {
+		int temp; cin >> temp;
+		sum += temp;
 	}
-
-	sort(a, a + k);
-	ll j = k - 1;
-	ll cat = 0, mouse = a[j], c = 0;
-
-	while (cat < mouse) {
-		ll val  = n - mouse;
-		c++;
-		j--;
-		if (j < 0) {
-			break;
+	int cnt = 0;
+	for (int i = 1; i <= 5; i++) {
+		if ((sum + i) % (n + 1) != 1) {
+			cnt++;
 		}
-		cat += val;
-		mouse = a[j];
+
+
 	}
-	cout << c << nl;
+	cout << cnt << endl;
 }
 /*--------------------------------------------------------*/
 int main() {
@@ -66,7 +57,7 @@ int main() {
 	freopen("output.txt", "w", stdout);
 	freopen("error.txt", "w", stderr);
 #endif
-	int t; cin >> t;
+	int t = 1;
 	while (t--) {
 
 		solve();
@@ -74,34 +65,3 @@ int main() {
 	}
 	return 0;
 }
-
-/*
-
-void solve() {
-
-	ll n , k ;
-	cin >> n >> k;
-	ll a[k];
-
-	Rep(i, 0, k) {
-		cin >> a[i];
-	}
-
-	sort(a, a + k);
-	ll j = k - 1;
-	ll cat = 0, mouse = a[j], c = 0;
-
-	while (cat < mouse) {
-		ll val  = n - mouse;
-		c++;
-		j--;
-		if (j < 0) {
-			break;
-		}
-		cat += val;
-		mouse = a[j];
-	}
-	cout << c << nl;
-}
-*/
-
