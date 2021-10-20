@@ -31,37 +31,32 @@ typedef vector<int> vi;
 #define all(x) x.begin(), x.end()
 #define ins insert
 /*--------------------------------------------------------*/
-bool comp(pair<ll, ll> &c, pair<ll, ll> &d) {
-	return c.s < d.s;
-}
-
 void solve() {
 
-	ll n, x, k = 0 ;
+	int V , E ; cin >> V >> E;
+	int a , b , c ;
+	vector<int> res(V + 1, 0);
+	while (E--) {
 
-	cin >> n;
-	vector<pair<ll, ll>> v;
-	for (int i = 0; i < n ; i++) {
-		cin >> x;
-		v.pb(mp(x , i));
+		cin >> a >> b >> c;
+		res[b] = 1;
 	}
-	sort(all(v));
-
-	for (int i = 0; i < n ; i++) {
-		if (v[i]. f > k) {
-			v[i].f = k;
-			k++;
-		}
-		else if (v[i].f == k) {
-			v[i].f = k;
+	int star;
+	for (int i = 1; i <= V; ++i)
+	{
+		if (res[i] == 0) {
+			star = i;
+			break;
 		}
 	}
-	sort(all(v), comp);
 
-	for (int i = 0 ; i < n ; i++) {
-		cout << v[i].f << " ";
+	for (int i = 1; i <= V; ++i)
+	{
+		if (i == star) continue;
+		cout << star << " " << i << endl;
 	}
-	cout << nl;
+
+
 
 }
 /*--------------------------------------------------------*/
@@ -76,7 +71,7 @@ int main() {
 	while (t--) {
 
 		solve();
-
+		//cerr << endl;
 	}
 	return 0;
 }

@@ -31,37 +31,46 @@ typedef vector<int> vi;
 #define all(x) x.begin(), x.end()
 #define ins insert
 /*--------------------------------------------------------*/
-bool comp(pair<ll, ll> &c, pair<ll, ll> &d) {
-	return c.s < d.s;
+bool isPrime(int n) {
+	for (int i = 2 ; i * i <= n; i++) {
+		if (n % i == 0) return false;
+	}
+	return true;
 }
 
 void solve() {
 
-	ll n, x, k = 0 ;
-
-	cin >> n;
-	vector<pair<ll, ll>> v;
-	for (int i = 0; i < n ; i++) {
-		cin >> x;
-		v.pb(mp(x , i));
-	}
-	sort(all(v));
-
-	for (int i = 0; i < n ; i++) {
-		if (v[i]. f > k) {
-			v[i].f = k;
-			k++;
-		}
-		else if (v[i].f == k) {
-			v[i].f = k;
+	int n ; cin >> n;
+	vector<int> v(n, 0);
+	int sum = 0;
+	int odd_idx;
+	for (int i = 1 ; i <= n ; i++) {
+		cin >> v[i - 1];
+		sum += v[i - 1];
+		if (v[i - 1] % 2 == 1) {
+			odd_idx = i;
 		}
 	}
-	sort(all(v), comp);
 
-	for (int i = 0 ; i < n ; i++) {
-		cout << v[i].f << " ";
+	debug(odd_idx);
+
+	if (sum % 2 == 1 && isPrime(sum)) {
+		cout << n - 1 << endl;
+		for (int i = 1 ; i <= n; i++) {
+			if (odd_idx == i)continue;
+			cout << i << " ";
+		}
+		cout << endl;
 	}
-	cout << nl;
+
+	else {
+		cout << n << endl;
+		for (int i = 1 ; i <= n; i++) {
+			cout << i << " ";
+		}
+		cout << endl;
+	}
+
 
 }
 /*--------------------------------------------------------*/
