@@ -32,35 +32,21 @@ typedef vector<int> vi;
 #define ins insert
 /*--------------------------------------------------------*/
 void solve() {
-	int n ; cin >> n;
-	map<int , pair<int, int>> row;
-	map<int , pair<int, int>> col;
-	int count = 0;
-	vector<pair<int , int>> points;
-	for (int i = 0; i < n ; i++) {
-		int a , b ;
-		cin >> a >> b;
-		points.push_back({a, b});
-		row[b] = {1001, -1001};
-		col[a] = {1001 , -1001};
+	int pages; cin >> pages;
 
+	int days[8];
+	for (int i = 0 ; i < 7 ; i++) {
+		cin >> days[i];
+	}
+	int i = 0;
+	while (pages > 0) {
+		if (i == 7) i = 0;
+		pages -= days[i];
+		i++;
 	}
 
-	for (auto x : points) {
-		row[x.s] = {min(row[x.s].f , x.f) , max(row[x.s].s, x.f)} ;
-		col[x.f] = {min(col[x.f].f , x.s) , max(col[x.f].s, x.s)} ;
+	cout << i << endl;
 
-	}
-
-	for (auto x : points) {
-
-		if ((x.f > row[x.s].f && x.f < row[x.s].s) &&
-		        (x.s > col[x.f].f && x.s < col[x.f].s)) {
-			count ++;
-		}
-	}
-
-	cout << count << endl;
 }
 /*--------------------------------------------------------*/
 int main() {
@@ -78,4 +64,3 @@ int main() {
 	}
 	return 0;
 }
-

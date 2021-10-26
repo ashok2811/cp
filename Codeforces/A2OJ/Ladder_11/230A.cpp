@@ -32,35 +32,37 @@ typedef vector<int> vi;
 #define ins insert
 /*--------------------------------------------------------*/
 void solve() {
-	int n ; cin >> n;
-	map<int , pair<int, int>> row;
-	map<int , pair<int, int>> col;
-	int count = 0;
-	vector<pair<int , int>> points;
-	for (int i = 0; i < n ; i++) {
+
+	int hp , n ;
+	cin >> hp >> n ;
+	vector<pair<int , int>> dragons;
+
+	for (int i = 0 ; i < n ; i++) {
 		int a , b ;
-		cin >> a >> b;
-		points.push_back({a, b});
-		row[b] = {1001, -1001};
-		col[a] = {1001 , -1001};
-
+		cin >> a >> b ;
+		dragons.pb({a , b});
 	}
 
-	for (auto x : points) {
-		row[x.s] = {min(row[x.s].f , x.f) , max(row[x.s].s, x.f)} ;
-		col[x.f] = {min(col[x.f].f , x.s) , max(col[x.f].s, x.s)} ;
-
-	}
-
-	for (auto x : points) {
-
-		if ((x.f > row[x.s].f && x.f < row[x.s].s) &&
-		        (x.s > col[x.f].f && x.s < col[x.f].s)) {
-			count ++;
+	sort(all(dragons));
+	bool ans = true;
+	for (auto x : dragons) {
+		if (hp > x.f) {
+			hp += x.s;
+		}
+		else {
+			ans = false;
+			break;
 		}
 	}
 
-	cout << count << endl;
+
+	if (ans) cout << "YES";
+	else cout << "NO";
+
+
+
+
+
 }
 /*--------------------------------------------------------*/
 int main() {
@@ -78,4 +80,3 @@ int main() {
 	}
 	return 0;
 }
-

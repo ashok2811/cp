@@ -31,36 +31,22 @@ typedef vector<int> vi;
 #define all(x) x.begin(), x.end()
 #define ins insert
 /*--------------------------------------------------------*/
+
 void solve() {
-	int n ; cin >> n;
-	map<int , pair<int, int>> row;
-	map<int , pair<int, int>> col;
-	int count = 0;
-	vector<pair<int , int>> points;
-	for (int i = 0; i < n ; i++) {
-		int a , b ;
-		cin >> a >> b;
-		points.push_back({a, b});
-		row[b] = {1001, -1001};
-		col[a] = {1001 , -1001};
 
+	ll a, b , c;
+	cin >> a >> b >> c;
+
+	ll ans = a + 2LL * b  + 3LL * c;
+
+	if (ans % 2LL) {
+		cout << 1 << endl;
 	}
 
-	for (auto x : points) {
-		row[x.s] = {min(row[x.s].f , x.f) , max(row[x.s].s, x.f)} ;
-		col[x.f] = {min(col[x.f].f , x.s) , max(col[x.f].s, x.s)} ;
+	else cout << 0 << endl;
 
-	}
 
-	for (auto x : points) {
 
-		if ((x.f > row[x.s].f && x.f < row[x.s].s) &&
-		        (x.s > col[x.f].f && x.s < col[x.f].s)) {
-			count ++;
-		}
-	}
-
-	cout << count << endl;
 }
 /*--------------------------------------------------------*/
 int main() {
@@ -70,7 +56,7 @@ int main() {
 	freopen("output.txt", "w", stdout);
 	freopen("error.txt", "w", stderr);
 #endif
-	int t = 1;
+	int t; cin >> t;
 	while (t--) {
 
 		solve();
@@ -78,4 +64,3 @@ int main() {
 	}
 	return 0;
 }
-

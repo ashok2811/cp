@@ -32,35 +32,28 @@ typedef vector<int> vi;
 #define ins insert
 /*--------------------------------------------------------*/
 void solve() {
-	int n ; cin >> n;
-	map<int , pair<int, int>> row;
-	map<int , pair<int, int>> col;
-	int count = 0;
-	vector<pair<int , int>> points;
-	for (int i = 0; i < n ; i++) {
-		int a , b ;
-		cin >> a >> b;
-		points.push_back({a, b});
-		row[b] = {1001, -1001};
-		col[a] = {1001 , -1001};
 
+	int n ;
+	cin >> n;
+	int zeros = 0;
+	int ones = 0;
+	for (int i = 0 ; i < n ; i++) {
+		int temp ; cin >> temp ;
+		if (temp == 0) zeros++;
+		if (temp == 1) ones++;
+		//debug(temp);
+	}
+	ll ans = 1LL ;
+	ans = ans * ones;
+	//debug(ans);
+
+	for (int i = 0 ; i < zeros; i++) {
+		ans = ans * 2;
 	}
 
-	for (auto x : points) {
-		row[x.s] = {min(row[x.s].f , x.f) , max(row[x.s].s, x.f)} ;
-		col[x.f] = {min(col[x.f].f , x.s) , max(col[x.f].s, x.s)} ;
+	cout << ans << endl;
 
-	}
 
-	for (auto x : points) {
-
-		if ((x.f > row[x.s].f && x.f < row[x.s].s) &&
-		        (x.s > col[x.f].f && x.s < col[x.f].s)) {
-			count ++;
-		}
-	}
-
-	cout << count << endl;
 }
 /*--------------------------------------------------------*/
 int main() {
@@ -70,7 +63,7 @@ int main() {
 	freopen("output.txt", "w", stdout);
 	freopen("error.txt", "w", stderr);
 #endif
-	int t = 1;
+	int t; cin >> t;
 	while (t--) {
 
 		solve();
@@ -78,4 +71,3 @@ int main() {
 	}
 	return 0;
 }
-

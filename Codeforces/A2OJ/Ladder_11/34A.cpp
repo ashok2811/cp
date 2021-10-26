@@ -32,35 +32,31 @@ typedef vector<int> vi;
 #define ins insert
 /*--------------------------------------------------------*/
 void solve() {
+
 	int n ; cin >> n;
-	map<int , pair<int, int>> row;
-	map<int , pair<int, int>> col;
-	int count = 0;
-	vector<pair<int , int>> points;
-	for (int i = 0; i < n ; i++) {
-		int a , b ;
-		cin >> a >> b;
-		points.push_back({a, b});
-		row[b] = {1001, -1001};
-		col[a] = {1001 , -1001};
-
+	int arr[n];
+	for (int i = 0 ; i < n ; i++) {
+		cin >> arr[i];
 	}
+	int idx , idy;
+	int mn = INT_MAX;
+	for (int i = 0 ; i < n ; i++) {
+		if (abs(arr[(i + 1) % n] - arr[i]) < mn) {
+			debug(abs(arr[(i + 1) % n] - arr[i]));
 
-	for (auto x : points) {
-		row[x.s] = {min(row[x.s].f , x.f) , max(row[x.s].s, x.f)} ;
-		col[x.f] = {min(col[x.f].f , x.s) , max(col[x.f].s, x.s)} ;
-
-	}
-
-	for (auto x : points) {
-
-		if ((x.f > row[x.s].f && x.f < row[x.s].s) &&
-		        (x.s > col[x.f].f && x.s < col[x.f].s)) {
-			count ++;
+			idx = (i + 1) % n; idy = i ;
+			mn = abs(arr[(i + 1) % n] - arr[i]);
+			debug((i + 1) % n);
+			debug(i);
 		}
+
 	}
 
-	cout << count << endl;
+	cout << idx + 1 << " " << idy + 1 << endl;
+
+
+
+
 }
 /*--------------------------------------------------------*/
 int main() {
@@ -78,4 +74,3 @@ int main() {
 	}
 	return 0;
 }
-

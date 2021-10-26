@@ -31,36 +31,60 @@ typedef vector<int> vi;
 #define all(x) x.begin(), x.end()
 #define ins insert
 /*--------------------------------------------------------*/
+
+char arr[101][101];
+int vis[101][101];
+int N, M;
+
+int dx[] = { -1, 0 , 1 , 0};
+int dy[] = {0, -1 , 0 , 1};
+
+bool isValid(int i , int j) {
+	if (i < 1 || i > N || j < 1 || j > M) return false;
+	if (arr[i][j] == '-') return false;
+	return true;
+}
+
+
+void dfs(int i , int  j , bool col) {
+	vis[i][j] = 1;
+	for (int k = 0 ; k < 4 ; k ++) {
+		if (isValid(i + dx[k] , j + dy[k]) && !vis[i + dx[k]][j + dy[k]]) {
+			dfs(i + dx[k] , j + dy[k] , col ^ 1);
+		}
+	}
+	if (col == 1) arr[i][j] = 'W';
+	else if (col == 0) arr[i][j] = 'B';
+}
+
+
 void solve() {
-	int n ; cin >> n;
-	map<int , pair<int, int>> row;
-	map<int , pair<int, int>> col;
-	int count = 0;
-	vector<pair<int , int>> points;
-	for (int i = 0; i < n ; i++) {
-		int a , b ;
-		cin >> a >> b;
-		points.push_back({a, b});
-		row[b] = {1001, -1001};
-		col[a] = {1001 , -1001};
 
-	}
-
-	for (auto x : points) {
-		row[x.s] = {min(row[x.s].f , x.f) , max(row[x.s].s, x.f)} ;
-		col[x.f] = {min(col[x.f].f , x.s) , max(col[x.f].s, x.s)} ;
-
-	}
-
-	for (auto x : points) {
-
-		if ((x.f > row[x.s].f && x.f < row[x.s].s) &&
-		        (x.s > col[x.f].f && x.s < col[x.f].s)) {
-			count ++;
+	cin >> N >> M ;
+	for (int i = 1 ; i <= N ; i++ ) {
+		for (int j = 1; j <= M; j++) {
+			cin >> arr[i][j];
 		}
 	}
 
-	cout << count << endl;
+	for (int i = 1 ; i <= N ; i++ ) {
+		for (int j = 1; j <= M; j++) {
+			if (isValid(i , j) && !vis[i][j]) {
+				dfs(i , j , 0);
+			}
+		}
+	}
+
+	for (int i = 1 ; i <= N ; i++ ) {
+		for (int j = 1; j <= M; j++) {
+			cout << arr[i][j];
+		}
+		cout << endl;
+	}
+
+
+
+
 }
 /*--------------------------------------------------------*/
 int main() {
@@ -78,4 +102,3 @@ int main() {
 	}
 	return 0;
 }
-

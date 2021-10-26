@@ -13,24 +13,26 @@ void _print(vector<int> v1) {
 #define debug(x)
 #endif
 
-int solve(vector<int> &nums, int sum, int size) {
+int solve(string &s) {
     int i = 0, j = 0, ans = -1;
-    int k = 0;
-    while (j < size) {
+    int size = s.length();
+    unordered_map<char, int> mp;
 
-        k += nums[j];
-        if (k < sum) {// Hit sum barrier
+    while ( j < size) {
+
+        mp[s[j]]++;
+        if (mp[s[j]] < 2 ) {// Hit the size
             j++;
         }
 
-        else if (k == sum) { // Found a window having intended sum
-            ans = max(ans, j - i + 1);
-            j++;
-        }
-        else if (k > sum) {
+        else if (mp[s[j]] == 2 ) {
+            ans = max(ans, (int)(mp.size()));
 
-            while (k > sum ) {
-                k -= nums[i]; // Remove & Slide
+            while (mp[s[j]] == 2) {
+                mp[s[i]]--; // Remove & Slide
+                if (mp[s[i]] == 0) { // If size == 0 , remove the element
+                    mp.erase(s[i]);
+                }
                 i++;
             }
             j++;  // Slide
@@ -48,15 +50,9 @@ int main() {
     freopen("error.txt", "w", stderr);
 #endif
 
-    vector<int> nums; int sum, size;
-    cin >> size >> sum;
 
-    for (int i = 0 ; i < size; i ++) {
-        int temp; cin >> temp;
-        nums.push_back(temp);
-    }
-
-    cout << solve(nums, sum, size);
+    string s ; cin >> s;
+    cout << solve(s);
 
     return 0;
 }
