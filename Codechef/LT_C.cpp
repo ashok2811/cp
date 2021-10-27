@@ -34,16 +34,16 @@ typedef vector<int> vi;
 
 void solve() {
 
-	int n , good;
+	long long n , good;
 	cin >> n >> good;
-	vector<int> arr(n * n);
+	vector<long long> arr(n * n);
 	for (int i = 0 ; i < n * n ; i++) {
 		cin >> arr[i];
 	}
 
 	sort(all(arr));
 	int beg = n * (n / 2) ;
-	int sum = 0 ;
+	long long sum = 0 ;
 	for (int i = beg ; i < beg + n ; i++) {
 		cout << arr[i] << " ";
 		sum += arr[i];
