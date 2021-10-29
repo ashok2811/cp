@@ -53,6 +53,7 @@ int Floor(int arr[] , int l , int r , int key) {
 }
 
 
+
 void solve() {
 
 	int n, key; cin >> n >> key;
