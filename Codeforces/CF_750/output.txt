@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 NO
 NO
 NO
@@ -6,3 +7,6 @@ NO
 NO
 YES
 NO
+=======
+0
+>>>>>>> main

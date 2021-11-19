@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 8
 4
 1 2 5 2
@@ -23,3 +24,16 @@ BR
 4
 -2 -1 4 0
 RRRR
+=======
+5
+8
+abcaacab
+6
+xyzxyz
+4
+abba
+8
+rprarlap
+10
+khyyhhyhky
+>>>>>>> main

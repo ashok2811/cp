@@ -32,6 +32,7 @@ typedef vector<int> vi;
 #define ins insert
 /*--------------------------------------------------------*/
 void solve() {
+<<<<<<< HEAD
 	int n , k ;
 	cin >> n >> k;
 	vector<int> v;
@@ -54,6 +55,17 @@ void solve() {
 	s = s + (ll)(rem * (pow(10, v[i])));
 
 	cout << s << endl;
+=======
+
+
+
+
+
+
+
+
+
+>>>>>>> main
 }
 /*--------------------------------------------------------*/
 int main() {
