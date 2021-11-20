@@ -1,0 +1,4 @@
+Number: 4 Result : 1
+Number: 12 Result : 0
+Number: 3 Result : 1
+Number: 6 Result : 1

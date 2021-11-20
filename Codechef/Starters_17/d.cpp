@@ -64,8 +64,8 @@ void solve() {
 
 		ones = x.first ;
 		val = val + x.second.second + ones * last_zeros;
-		// cerr << x.second.first << " " << x.second.second << " " << val << " " <<
-		//      last_zeros << " " << ones << endl;
+		cerr << x.second.first << " " << x.second.second << " " << val << " " <<
+		     last_zeros << " " << ones << endl;
 		last_zeros += m - x.first;
 
 		pq.pop();
